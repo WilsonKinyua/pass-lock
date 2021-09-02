@@ -1,5 +1,9 @@
+import random
+import string
+
+
 class Credentials():
-    
+
     user_credentials = []
 
     def __init__(self, account_name_page, user_account_password):
@@ -28,3 +32,13 @@ class Credentials():
             returns the credentials list
         """
         return cls.user_credentials
+
+    @classmethod
+    def generate_password(cls, password_length):
+        """
+            generate random password for a user creating a new account
+        """
+        alphabet = string.ascii_letters + string.digits
+        password = ''.join(random.choice(alphabet)
+                           for i in range(password_length))
+        return password
