@@ -37,3 +37,14 @@ class User():
             if user.username == username:
                 return True
         return False
+
+    # check if user exists and if password is correct 
+    # @classmethod
+    # def check_user(cls, username, password):
+    #     """
+    #     Check if user exists and if password is correct
+    #     """
+    #     user = cls.find_user(username)
+    #     if user and user.password == password:
+    #         return True
+    #     return False
