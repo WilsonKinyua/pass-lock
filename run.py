@@ -3,11 +3,11 @@ from user import User
 from credentials import Credentials
 
 
-def create_user(fname, lname, username, password):
+def create_new_user(first_name, last_name, username, user_password):
     '''
     create a new user
     '''
-    new_user = User(fname, lname, username, password)
+    new_user = User(first_name, last_name, username, user_password)
     return new_user
 
 
@@ -40,25 +40,32 @@ def check_existing_user(username):
 
 
 def main():
-    print("Welcome to Password Locker 😎")
+    # ask user name
+    print("Hello, Whats your name?")
+    name = input()
+    #greeting
+    print(f"Welcome to Password Locker {name} 😎. How can I help you")
     print("\n")
     while True:
-        print("Use these short codes : cc - create a new user account, dc - display user account, fc -find a user account, ex -exit the user list")
+        print("Use these short codes to use password locker : cc - create a new user account, lg - to login to your account, dis -display account, ex -exit the user list")
         short_code = input().lower()
         if short_code == 'cc':
             print("New User")
             print("-"*10)
-            print("First name ....")
-            fname = input()
-            print("Last name ...")
-            lname = input()
-            print("Username ...")
+            print("Enter your first name ....")
+            first_name = input()
+            print("Enter your last name ...")
+            last_name = input()
+            print("Enter your username ...")
             username = input()
-            print("Password ...")
-            password = input()
-            save_user(create_user(fname, lname, username, password))
+            print("Enter password ...")
+            user_password = input()
+            save_user(create_new_user(first_name, last_name,
+                      username, user_password))
+            full_name = first_name.upper() + " " + last_name.upper()
             print('\n')
-            print(f"New User {fname} {lname} {username} {password} created")
+            print(
+                f"Hello {full_name}. Account with username as '{username}' and password: '{user_password}' has been created successfully")
             print('\n')
         elif short_code == 'dc':
             pass
