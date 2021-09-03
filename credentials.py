@@ -40,16 +40,16 @@ class Credentials():
     @classmethod
     def display_credentials(cls):
         """
-            returns the credentials list
+            returns the credentials list(all credentials)
         """
         return cls.user_credentials
 
     @classmethod
     def generate_password(cls, password_length):
         """
-            generate random password for a user creating a new account
+            generate random password for a user creating a new account int the user_credentials[]
         """
-        alphabet = string.ascii_letters + string.digits
-        password = ''.join(random.choice(alphabet)
+        alpa = string.ascii_letters + string.digits
+        password = ''.join(random.choice(alpa)
                            for i in range(password_length))
         return password

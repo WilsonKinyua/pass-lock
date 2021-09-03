@@ -47,23 +47,3 @@ class User():
         if user and user.password == password:
             return True
         return False
-
-    # function to login user from username and password in the user_accounts[] and if incorrect password print "Incorrect Password"
-    @classmethod
-    def login_user(cls, username, password):
-        """
-        Login user from username and password
-        """
-        user = cls.find_user(username)
-        if user and user.password == password:
-            return True
-        return False
-    
-    # @classmethod
-    # def display_users(cls):
-    #     """
-    #     Display all users
-    #     """
-    #     return cls.user_accounts
-
-

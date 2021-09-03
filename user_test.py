@@ -8,7 +8,7 @@ class TestUser(unittest.TestCase):
         Setup method for the test class to create a new user
         """
         self.new_user = User("wilson", "kinyua",
-                             "developerwilson", "password@2021")
+                             "developerwilson", "pass21")
 
     def test_user_created(self):
         """
@@ -17,7 +17,7 @@ class TestUser(unittest.TestCase):
         self.assertEqual(self.new_user.first_name, "wilson")
         self.assertEqual(self.new_user.last_name, "kinyua")
         self.assertEqual(self.new_user.username, "developerwilson")
-        self.assertEqual(self.new_user.password, "password@2021")
+        self.assertEqual(self.new_user.password, "pass21")
 
     def test_user_save(self):
         """
@@ -42,7 +42,6 @@ class TestUser(unittest.TestCase):
         check whether the user account exists in the user accounts list
         """
         self.found_user = User.find_user("developerwilson")
-        # self.assertEqual(self.found_user.username, "developerwilson")
 
     def test_user_exists(self):
         """
