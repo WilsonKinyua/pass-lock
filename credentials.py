@@ -23,11 +23,10 @@ class Credentials():
 
     def delete_credentials(self):
         """
-            deletes a saved credential from the user_credentials[]
+            deletes saved credential from the user_credentials[]
         """
         Credentials.user_credentials.remove(self)
 
-    # find credentials by account_platform
     @classmethod
     def find_by_account_platform(cls, account_platform):
         """
@@ -36,6 +35,7 @@ class Credentials():
         for credentials in cls.user_credentials:
             if credentials.account_platform == account_platform:
                 return credentials
+        return False
 
     @classmethod
     def display_credentials(cls):

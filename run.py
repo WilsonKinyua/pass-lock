@@ -46,11 +46,12 @@ def check_user_password(username, password):
     return User.check_user(username, password)
 
 
-def create_new_credential(account_name, account_password):
+def create_new_credential(account_name, account_username, account_password):
     '''
     function to create a new credential
     '''
-    new_credential = Credentials(account_name, account_password)
+    new_credential = Credentials(
+        account_name, account_username, account_password)
     return new_credential
 
 
@@ -66,6 +67,20 @@ def display_credentials():
     funtion to display credentials
     """
     return Credentials.display_credentials()
+
+
+def delete_credential(account_platform):
+    '''
+    function to delete credentials
+    '''
+    Credentials.delete_credentials(account_platform)
+
+
+def find_credential(account_name):
+    '''
+    find credentials eg to delete
+    '''
+    return Credentials.find_by_account_platform(account_name)
 
 
 def main():
@@ -91,10 +106,9 @@ def main():
             user_password = input()
             save_user(create_new_user(first_name, last_name,
                       username, user_password))
-            full_name = first_name.upper() + " " + last_name.upper()
             print('\n')
             print(
-                f"Hello {full_name}. Account with username as '{username}' and password: '{user_password}' has been created successfully")
+                f"Hello {first_name}😃. Account created successfully. Proceed to login to access your account")
             print('\n')
         elif short_code == 'lg':
             # login the user and check if the user exists
@@ -110,29 +124,50 @@ def main():
                     while True:
                         print("Select an option below to continue: \n")
                         print(
-                            "1. Create a new credential \n 2. View saved credentials \n 3. Delete credentials \n 4. Logout")
+                            "1. Create a new credential \n2. View saved credentials \n3. Delete credentials\n 4. Logout")
                         print("\n")
                         log_choice = int(input())
                         if log_choice == 1:
                             print("Enter the account name you want to create")
                             account_name = input()
-                            print("Enter your password")
+                            print("Enter the username of the account above")
+                            account_username = input()
+                            print("Enter password of the account")
                             account_password = input()
                             save_credentials(create_new_credential(
-                                account_name, account_password))
+                                account_name, account_username, account_password))
                             print('\n')
                             print(
-                                f"New Credential with account name '{account_name}' and password '{account_password}' has been created")
-                            print('\n')
+                                f"New Credential with account name '{account_name}' and password '{account_password}' has been created \n")
                         elif log_choice == 2:
+                            print('\n')
+                            print("Here is a list of all your credentials \n")
                             if display_credentials():
                                 for platform in display_credentials():
                                     print(
-                                        f"Account for {platform.account_platform} has username of {platform.user_account_username} and password is: {platform.user_account_password}")
+                                        f"Account for {platform.account_platform} has username of {platform.user_account_username} and password is: {platform.user_account_password} \n")
+                                # print("........" + display_credentials() + ".............")
                             else:
                                 print("No accounts saved!!")
+                        elif log_choice == 3:
+                            print("Enter the account name you want to delete")
+                            account_name_to_delete = input()
+                            if find_credential(account_name_to_delete):
+                                page_account_to_delete = account_name_to_delete
+                                # delete_credential(page_account_to_delete)
+                                # search for a single credential to delete
+                                print(
+                                    f"Credential with account name '{account_name_to_delete}' has been deleted")
+                                print('\n')
+                            else:
+                                print("No such account!!")
+
             else:
-                 print('Your entered wrong credentials')
+                print('Your entered wrong credentials')
+        elif short_code == 'ex':
+            print("Goodbye 😥 ....")
+            break
+
 
 if __name__ == '__main__':
     main()
