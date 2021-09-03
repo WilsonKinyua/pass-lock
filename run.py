@@ -83,6 +83,13 @@ def find_credential(account_name):
     return Credentials.find_by_account_platform(account_name)
 
 
+def generate_password(password_length):
+    """
+    generate a random password for the user
+    """
+    return Credentials.generate_password(password_length)
+
+
 def main():
     # ask user name
     print("Hello, Whats your name?")
@@ -94,7 +101,7 @@ def main():
         print("Use these short codes to use password locker : cc - create a new user account, lg - to login to your account, dis -display account, ex -exit the user list")
         short_code = input().lower()
         if short_code == 'cc':
-            print("New User")
+            print("Create New User Account")
             print("-"*10)
             print("Enter your first name ....")
             first_name = input()
@@ -132,8 +139,27 @@ def main():
                             account_name = input()
                             print("Enter the username of the account above")
                             account_username = input()
-                            print("Enter password of the account")
-                            account_password = input()
+                            print('\n')
+                            # allow user to select the option to generate a random password or enter password
+                            print("Do you want to generate a random password or enter your own password?\n   Enter 1 to generate a random password or enter your own password\n   Enter 2 to enter your own password")
+                            print("\n")
+                            choice = int(input())
+                            if choice == 1:
+                                print(
+                                    "How long do you want your password to be?")
+                                password_length = int(input())
+                                account_password = generate_password(
+                                    password_length)
+                                print(
+                                    f"Your password is {account_password}")
+                                print("\n")
+                            elif choice == 2:
+                                print("Enter password of the account")
+                                account_password = input()
+                            else:
+                                print("Invalid input")
+
+                            print("\n")
                             save_credentials(create_new_credential(
                                 account_name, account_username, account_password))
                             print('\n')
