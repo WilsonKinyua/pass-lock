@@ -38,13 +38,32 @@ class User():
                 return True
         return False
 
-    # check if user exists and if password is correct 
+    @classmethod
+    def check_user(cls, username, password):
+        """
+        Check if user exists and if password is correct
+        """
+        user = cls.find_user(username)
+        if user and user.password == password:
+            return True
+        return False
+
+    # function to login user from username and password in the user_accounts[] and if incorrect password print "Incorrect Password"
+    @classmethod
+    def login_user(cls, username, password):
+        """
+        Login user from username and password
+        """
+        user = cls.find_user(username)
+        if user and user.password == password:
+            return True
+        return False
+    
     # @classmethod
-    # def check_user(cls, username, password):
+    # def display_users(cls):
     #     """
-    #     Check if user exists and if password is correct
+    #     Display all users
     #     """
-    #     user = cls.find_user(username)
-    #     if user and user.password == password:
-    #         return True
-    #     return False
+    #     return cls.user_accounts
+
+
