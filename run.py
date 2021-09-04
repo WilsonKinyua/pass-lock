@@ -201,7 +201,7 @@ def main():  # main function
             else:
                 print('Your entered wrong credentials')
         elif short_code == 'ex':  # exit
-            print("Goodbye 😥 ....")
+            print("Goodbye 😥 ........")
             break
 
 
