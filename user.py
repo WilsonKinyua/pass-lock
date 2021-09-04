@@ -23,12 +23,7 @@ class User():
         """
         User.user_accounts.remove(self)
 
-    @classmethod
-    def find_user(cls, username):
-        """Find user by username"""
-        for user in cls.user_accounts:
-            if user.username == username:
-                return user
+
 
     @classmethod
     def user_exist(cls, username):
