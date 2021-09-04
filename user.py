@@ -30,13 +30,7 @@ class User():
             if user.username == username:
                 return user
 
-    @classmethod
-    def user_exist(cls, username):
-        """Check if user exists"""
-        for user in cls.user_accounts:
-            if user.username == username:
-                return True
-        return False
+
 
     @classmethod
     def check_user(cls, username, password):
